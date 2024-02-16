@@ -3,6 +3,7 @@ name: Test Mac Binaries
 on:
   push:
   workflow_dispatch:
+  pull_request:
 
 jobs:
     build-and-run:
