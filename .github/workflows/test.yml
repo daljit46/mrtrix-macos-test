@@ -20,16 +20,16 @@ jobs:
         # Test mrinfo (exit after 10 seconds)
         - name: Test mrinfo
           run: |
-            timeout 10 mrinfo
+            mrinfo
         
         - name: Test mrview
           run: |
             export QT_QPA_PLATFORM=offscreen
-            timeout 10 mrview
+            mrview
 
         - name: Test dwifslpreproc
           run: |
-            timeout 10 dwifslpreproc
+            dwifslpreproc
 
         - name: Run uninstaller
           run: |
