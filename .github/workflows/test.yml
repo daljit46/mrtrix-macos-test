@@ -19,19 +19,18 @@ jobs:
             chmod +x install
             sudo ./install -f
         
-        # Test mrinfo (exit after 10 seconds)
         - name: Test mrinfo
           run: |
             mrinfo
-        
-        - name: Test mrview
-          run: |
-            export QT_QPA_PLATFORM=offscreen
-            mrview --version
 
         - name: Test dwifslpreproc
           run: |
             dwifslpreproc
+
+        - name: Test mrview
+          run: |
+            export QT_QPA_PLATFORM=offscreen
+            mrview --version
 
         - name: Run uninstaller
           run: |
