@@ -17,7 +17,7 @@ jobs:
           run: |
             wget https://raw.githubusercontent.com/MRtrix3/macos-installer/master/install
             chmod +x install
-            sudo ./install 
+            sudo ./install -f
         
         # Test mrinfo (exit after 10 seconds)
         - name: Test mrinfo
@@ -37,4 +37,4 @@ jobs:
           run: |
             wget https://raw.githubusercontent.com/MRtrix3/macos-installer/master/uninstall
             chmod +x uninstall
-            sudo ./uninstall
+            sudo ./uninstall -f
