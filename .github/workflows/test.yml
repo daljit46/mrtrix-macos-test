@@ -30,7 +30,7 @@ jobs:
         - name: Test mrview
           run: |
             export QT_QPA_PLATFORM=cocoa
-            mrview
+            mrview --help
 
         - name: Run uninstaller
           run: |
