@@ -1,0 +1,38 @@
+# A Github workflow to test mac binaries
+name: Test Mac Binaries
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+    build-and-run:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        matrix:
+          os: [macos-latest, macos-12, macos-11]
+      steps:
+        - name: Run Installer
+          run: |
+            curl -fsSL https://raw.githubusercontent.com/MRtrix3/macos-installer/master/install
+            chmod +x install
+            ./install 
+        
+        # Test mrinfo (exit after 10 seconds)
+        - name: Test mrinfo
+          run: |
+            timeout 10 mrinfo
+        
+        - name: Test mrview
+          run: |
+            export QT_QPA_PLATFORM=offscreen
+            timeout 10 mrview
+
+        - name: Test dwifslpreproc
+          run: |
+            timeout 10 dwifslpreproc
+
+        - name: Run uninstaller
+          run: |
+            curl -fsSL https://raw.githubusercontent.com/MRtrix3/macos-installer/master/uninstall
+            chmod +x uninstall
+            ./uninstall
